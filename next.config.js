@@ -1,3 +1,23 @@
-const withNextra = require('nextra')('nextra-theme-blog', './theme.config.js')
+const nextra = require('nextra')
 
-module.exports = withNextra()
+module.exports = nextra('./components/layout.js')({
+  experimental: {
+    turboMode: true,
+  },
+  images: {
+    domains: ['pbs.twimg.com', 'abs.twimg.com'],
+  },
+  headers() {
+    return [
+      {
+        source: '/atom/:nested*',
+        headers: [
+          {
+            key: 'content-type',
+            value: 'text/xml',
+          },
+        ],
+      },
+    ]
+  },
+})

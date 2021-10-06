@@ -1,0 +1,8 @@
+{
+  "posts": [
+    {
+      "slug": "/blog/hello-world",
+      "title": "Hello World"
+    }
+  ]
+}
