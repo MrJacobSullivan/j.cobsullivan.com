@@ -1,6 +1,4 @@
 {
-  "name": "portfolio-blog",
-  "version": "0.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -10,12 +8,12 @@
   },
   "dependencies": {
     "@fontsource/inter": "^4.5.0",
-    "esbuild": "^0.13.4",
     "gray-matter": "^4.0.3",
-    "mdx-bundler": "^6.0.2",
     "next": "11.1.2",
+    "nextra": "^1.1.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "rss": "^1.2.2",
     "sass": "^1.42.1"
   },
   "devDependencies": {
