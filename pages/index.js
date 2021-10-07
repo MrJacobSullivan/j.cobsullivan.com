@@ -8,6 +8,9 @@ export default function Home() {
       <Link href='/blog'>
         <a>Blog</a>
       </Link>
+      <Link href='/work'>
+        <a>Work</a>
+      </Link>
     </Layout>
   )
 }
