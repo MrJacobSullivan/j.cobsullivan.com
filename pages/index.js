@@ -1,7 +1,13 @@
+import Link from 'next/link'
+import Layout from '../components/Layout'
+
 export default function Home() {
   return (
-    <>
-      <h1>Portfolio</h1>
-    </>
+    <Layout>
+      <h1>Home</h1>
+      <Link href='/blog'>
+        <a>Blog</a>
+      </Link>
+    </Layout>
   )
 }

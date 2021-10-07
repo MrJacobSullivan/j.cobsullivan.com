@@ -1,18 +1,26 @@
-import posts from '../../data/posts.json'
 import Link from 'next/link'
+import Layout from '../../components/Layout'
+import { getAllFiles } from '../../utils/mdx'
 
-export default function Blog() {
+export default function Blog({ posts }) {
   return (
-    <div>
+    <Layout>
+      <h1>Blog</h1>
       <ul>
-        {posts.posts.map((post) => (
-          <li key={post.slug}>
-            <Link href={post.slug}>
-              <a>{post.title}</a>
+        {posts.map((post) => (
+          <li key={post.filePath}>
+            <Link href={`/blog/${post.filePath.replace(/\.mdx?$/, '')}`}>
+              <a>{post.data.title}</a>
             </Link>
           </li>
         ))}
       </ul>
-    </div>
+    </Layout>
   )
+}
+
+export function getStaticProps() {
+  const posts = getAllFiles('blog')
+
+  return { props: { posts } }
 }
