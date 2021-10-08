@@ -4,7 +4,7 @@ import { getAllFiles } from '../../utils/mdx'
 
 export default function Work({ projects }) {
   return (
-    <Layout>
+    <section>
       <h1>Work</h1>
       <ul>
         {projects.map((project) => (
@@ -15,8 +15,12 @@ export default function Work({ projects }) {
           </li>
         ))}
       </ul>
-    </Layout>
+    </section>
   )
+}
+
+Work.getLayout = function getLayout(page) {
+  return <Layout>{page}</Layout>
 }
 
 export function getStaticProps() {

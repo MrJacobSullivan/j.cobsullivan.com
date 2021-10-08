@@ -12,13 +12,17 @@ const components = {
 
 export default function Project({ source, frontmatter }) {
   return (
-    <Layout>
+    <section>
       <div>
         <h1>{frontmatter.title}</h1>
       </div>
       <MDXRemote {...source} components={components} />
-    </Layout>
+    </section>
   )
+}
+
+Project.getLayout = function getLayout(page) {
+  return <Layout>{page}</Layout>
 }
 
 export const getStaticPaths = async () => {

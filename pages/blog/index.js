@@ -4,7 +4,7 @@ import { getAllFiles } from '../../utils/mdx'
 
 export default function Blog({ posts }) {
   return (
-    <Layout>
+    <section>
       <h1>Blog</h1>
       <ul>
         {posts.map((post) => (
@@ -15,8 +15,12 @@ export default function Blog({ posts }) {
           </li>
         ))}
       </ul>
-    </Layout>
+    </section>
   )
+}
+
+Blog.getLayout = function getLayout(page) {
+  return <Layout>{page}</Layout>
 }
 
 export function getStaticProps() {
