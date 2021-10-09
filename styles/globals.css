@@ -6,9 +6,13 @@
 @import '@fontsource/inter';
 
 @layer base {
+  @font-face {
+    font-family: 'Inter';
+  }
+
   html,
   body {
-    font-family: 'Inter';
+    @apply font-sans;
   }
 }
 

@@ -6,15 +6,11 @@ export default function Navigation() {
   const { asPath } = useRouter()
 
   const handleCurrentPath = (route) => {
-    const home = () => (asPath === routes.home && !route ? 'current' : '')
-    return asPath.includes(route) ? 'current' : home()
+    return asPath.includes(route) ? 'current' : ''
   }
 
   return (
-    <nav>
-      <Link href='/'>
-        <a className={handleCurrentPath()}>Home</a>
-      </Link>
+    <nav className='flex flex-col items-start justify-between h-full py-2 bg-green-2'>
       <Link href='/about'>
         <a className={handleCurrentPath(routes.about)}>About</a>
       </Link>
