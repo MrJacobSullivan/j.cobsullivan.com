@@ -4,10 +4,12 @@ export default function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer>
-      <p>
-        {meta.name} &copy; {year}
-      </p>
+    <footer className='flex flex-col items-center'>
+      <div className='w-full items-center flex-col flex h-[5vh] content-center'>
+        <p className='text-center text-lighter'>
+          {meta.name} &copy; {year}
+        </p>
+      </div>
     </footer>
   )
 }
