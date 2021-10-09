@@ -13,4 +13,7 @@
 }
 
 @layer components {
+  .current {
+    @apply text-red-3;
+  }
 }
