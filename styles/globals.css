@@ -3,16 +3,9 @@
 @tailwind components;
 @tailwind utilities;
 
-@import '@fontsource/inter';
-
 @layer base {
-  @font-face {
-    font-family: 'Inter';
-  }
-
-  html,
   body {
-    @apply font-sans;
+    @apply font-system;
   }
 }
 
