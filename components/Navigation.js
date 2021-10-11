@@ -5,20 +5,20 @@ import { routes } from '../config'
 export default function Navigation() {
   const { asPath } = useRouter()
 
-  const handleCurrentPath = (route) => {
-    return asPath.includes(route) ? 'current' : ''
+  const linkStyle = (route) => {
+    return asPath.includes(route) ? 'current' : 'py-1 text-lg'
   }
 
   return (
-    <nav className='flex flex-col items-start justify-between h-full py-2 bg-green-2'>
+    <nav className='flex flex-col items-start justify-between h-full py-8'>
       <Link href='/about'>
-        <a className={handleCurrentPath(routes.about)}>About</a>
+        <a className={linkStyle(routes.about)}>About</a>
       </Link>
       <Link href='/blog'>
-        <a className={handleCurrentPath(routes.blog)}>Blog</a>
+        <a className={linkStyle(routes.blog)}>Blog</a>
       </Link>
       <Link href='/work'>
-        <a className={handleCurrentPath(routes.work)}>Work</a>
+        <a className={linkStyle(routes.work)}>Work</a>
       </Link>
     </nav>
   )

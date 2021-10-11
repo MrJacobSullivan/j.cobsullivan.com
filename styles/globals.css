@@ -5,12 +5,12 @@
 
 @layer base {
   body {
-    @apply font-system;
+    @apply font-system bg-gray-0 text-gray-9;
   }
 }
 
 @layer components {
   .current {
-    @apply text-red-3;
+    @apply py-1 text-lg text-red-3;
   }
 }
