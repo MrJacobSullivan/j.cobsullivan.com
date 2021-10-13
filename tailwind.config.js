@@ -6,6 +6,7 @@ module.exports = {
   darkMode: 'class',
   theme: {
     colors: require('tailwindcss-open-color'),
+    typography: (theme) => ({}),
     extend: {
       fontFamily: {
         system: [...defaultTheme.fontFamily.sans],
