@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
-import { useTheme } from 'next-themes'
+
 import Navigation from './Navigation'
 
 const SwitchButton = dynamic(() => import('./SwitchButton'), { ssr: false })
