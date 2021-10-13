@@ -1,17 +1,13 @@
 import Link from 'next/link'
+import dynamic from 'next/dynamic'
 import { useTheme } from 'next-themes'
 import Navigation from './Navigation'
 
+const SwitchButton = dynamic(() => import('./SwitchButton'), { ssr: false })
+
 export default function Header() {
-  const { theme, setTheme } = useTheme()
-
-  const changeTheme = () => {
-    console.log(theme)
-    setTheme(theme === 'dark' ? 'light' : 'dark')
-  }
-
   return (
-    <header className='sticky top-0 flex w-full border-b-[1px] border-gray-9 bg-gray-0'>
+    <header className='sticky top-0 flex w-full border-b-[1px] border-gray-9 bg-gray-0 dark:bg-gray-9 dark:text-gray-0'>
       <div className='flex flex-col items-start justify-start w-1/2 h-auto py-8'>
         <Link href='/'>
           <a className='mb-4'>
@@ -23,7 +19,7 @@ export default function Header() {
 
       <div className='flex flex-col items-end w-1/2'>
         <Navigation />
-        <button onClick={changeTheme}>toggle</button>
+        <SwitchButton />
       </div>
     </header>
   )
