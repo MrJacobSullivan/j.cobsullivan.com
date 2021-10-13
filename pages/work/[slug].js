@@ -2,7 +2,6 @@ import Head from 'next/head'
 import { getPaths, getFileSource } from '../../utils/mdx'
 import { MDXRemote } from 'next-mdx-remote'
 
-import Layout from '../../components/Layout'
 import MDXLink from '../../components/MDXLink'
 
 const components = {
@@ -19,10 +18,6 @@ export default function Project({ source, frontmatter }) {
       <MDXRemote {...source} components={components} />
     </section>
   )
-}
-
-Project.getLayout = function getLayout(page) {
-  return <Layout>{page}</Layout>
 }
 
 export const getStaticPaths = async () => {

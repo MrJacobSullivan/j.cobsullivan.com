@@ -29,9 +29,9 @@ export default class MyDocument extends Document {
 
   render() {
     return (
-      <Html className='dark'>
+      <Html>
         <Head />
-        <body className='dark:bg-gray-9'>
+        <body className='bg-gray-0 dark:bg-gray-9'>
           <Main />
           <NextScript />
         </body>

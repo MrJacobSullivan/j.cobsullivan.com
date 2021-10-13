@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import Layout from '../../components/Layout'
 import { getAllFiles } from '../../utils/mdx'
 
 export default function Work({ projects }) {
@@ -17,10 +16,6 @@ export default function Work({ projects }) {
       </ul>
     </section>
   )
-}
-
-Work.getLayout = function getLayout(page) {
-  return <Layout>{page}</Layout>
 }
 
 export function getStaticProps() {
