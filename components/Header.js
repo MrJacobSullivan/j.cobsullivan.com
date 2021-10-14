@@ -7,7 +7,7 @@ const SwitchButton = dynamic(() => import('./SwitchButton'), { ssr: false })
 
 export default function Header() {
   return (
-    <header className='sticky top-0 flex w-full border-b-[1px] border-gray-9 bg-gray-0 dark:bg-gray-9 dark:text-gray-0'>
+    <header className='sticky top-0 flex w-full border-b-[1px] border-gray-9 bg-gray-0 dark:bg-gray-9 dark:text-gray-0 dark:border-gray-0'>
       <div className='flex flex-col items-start justify-start w-1/2 h-auto py-8'>
         <Link href='/'>
           <a className='mb-4'>
