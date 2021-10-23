@@ -16,9 +16,9 @@ const RedMain = styled(Main)(({ open }) => [
 
 export default function Home() {
   return (
-    <BlueMain>
+    <Main>
       <p>Home</p>
-    </BlueMain>
+    </Main>
   )
 }
 
