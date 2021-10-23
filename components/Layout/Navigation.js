@@ -11,9 +11,6 @@ export default function Navigation() {
 
   return (
     <nav className='flex flex-col items-start justify-between h-full py-8'>
-      <Link href='/about'>
-        <a className={linkStyle(routes.about)}>About</a>
-      </Link>
       <Link href='/blog'>
         <a className={linkStyle(routes.blog)}>Blog</a>
       </Link>

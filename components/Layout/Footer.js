@@ -7,7 +7,7 @@ export default function Footer() {
     <footer className='flex flex-col items-center'>
       <div className='w-full items-center flex-col flex h-[5vh] content-center'>
         <p className='text-center text-lighter'>
-          {meta.name} &copy; {year}
+          &copy; {meta.name} {year}. All rights reserved.
         </p>
       </div>
     </footer>
