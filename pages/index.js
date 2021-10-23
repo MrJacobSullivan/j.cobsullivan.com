@@ -9,16 +9,18 @@ const BlueMain = styled(Main)(() => ({
   '> p': tw`text-xl`,
 }))
 
-const RedMain = styled(Main)(({ open }) => [
-  tw`bg-red-2 text-red-8`,
-  open && tw`border border-red-9`,
+const RedMain = styled(Main)(({ border, large }) => [
+  tw`p-2 transition duration-100 bg-red-2 text-red-8`,
+  tw`hover:(bg-green-2 text-green-8 border-green-9 cursor-pointer)`,
+  border && tw`border border-red-9`,
+  large && tw`p-4 text-xl`,
 ])
 
 export default function Home() {
   return (
-    <Main>
+    <RedMain border large>
       <p>Home</p>
-    </Main>
+    </RedMain>
   )
 }
 

@@ -2,21 +2,28 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { routes } from '../../config'
 
+import tw, { styled } from 'twin.macro'
+import { LinkText } from '../StyledLink'
+
+const Nav = styled.nav(({}) => [tw`flex items-baseline justify-end bg-blue-5`])
+
 export default function Navigation() {
   const { asPath } = useRouter()
 
-  const linkStyle = (route) => {
-    return asPath.includes(route) ? 'current' : 'py-1 text-lg'
-  }
+  const isCurrent = (route) => asPath.includes(route)
 
   return (
-    <nav className='flex flex-col items-start justify-between h-full py-8'>
+    <Nav>
       <Link href='/blog'>
-        <a className={linkStyle(routes.blog)}>Blog</a>
+        <a>
+          <LinkText current={isCurrent(routes.blog)}>Blog</LinkText>
+        </a>
       </Link>
       <Link href='/work'>
-        <a className={linkStyle(routes.work)}>Work</a>
+        <a>
+          <LinkText current={isCurrent(routes.work)}>Work</LinkText>
+        </a>
       </Link>
-    </nav>
+    </Nav>
   )
 }
