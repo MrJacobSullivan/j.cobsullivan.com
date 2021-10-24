@@ -1,7 +1,7 @@
 import Header from './Header'
 import Footer from './Footer'
 
-import tw, { styled } from 'twin.macro'
+import tw from 'twin.macro'
 
 const Screen = tw.div`flex flex-col items-center justify-center w-screen`
 

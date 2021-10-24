@@ -1,15 +1,16 @@
+import { ThemeProvider } from 'next-themes'
 import GlobalStyles from '../components/GlobalStyles'
 import '../styles/globals.css'
 
-function App({ Component, pageProps }) {
+export default function App({ Component, pageProps }) {
   const getLayout = Component.getLayout || ((page) => page)
 
   return getLayout(
-    <div>
+    <>
       <GlobalStyles />
-      <Component {...pageProps} />
-    </div>
+      <ThemeProvider>
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </>
   )
 }
-
-export default App

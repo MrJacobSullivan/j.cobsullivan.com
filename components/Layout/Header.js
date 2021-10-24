@@ -5,7 +5,7 @@ import tw, { styled } from 'twin.macro'
 import { LinkText } from '../StyledLink'
 
 const StyledHeader = styled.header`
-  ${tw`sticky top-0 flex w-full bg-gray-0`};
+  ${tw`sticky top-0 flex w-full bg-gray-0 dark:(bg-gray-9)`};
 
   div.title {
     ${tw`flex flex-col items-start justify-start h-auto py-8`};
