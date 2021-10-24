@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { getPaths, getFileSource } from '../../utils/mdx'
 import { MDXRemote } from 'next-mdx-remote'
 
-import Layout from '../../components/Layout/Article'
+import Layout from '../../components/ArticleLayout'
 import MDXLink from '../../components/MDXLink'
 
 const components = {

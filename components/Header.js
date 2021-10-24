@@ -1,8 +1,10 @@
 import Link from 'next/link'
 import Navigation from './Navigation'
 
+import ThemeButton from './ThemeButton'
+
 import tw, { styled } from 'twin.macro'
-import { LinkText } from '../StyledLink'
+import { LinkText } from './StyledLink'
 
 const StyledHeader = styled.header`
   ${tw`sticky top-0 flex w-full bg-gray-0 dark:(bg-gray-9)`};
@@ -12,10 +14,6 @@ const StyledHeader = styled.header`
   }
 
   div.nav {
-    ${tw`flex flex-col items-end`}
-  }
-
-  div.buttons {
     ${tw`flex flex-col items-end`}
   }
 `
@@ -35,7 +33,9 @@ export default function Header() {
         <Navigation />
       </div>
 
-      <div className='buttons'></div>
+      <div className='buttons'>
+        <ThemeButton />
+      </div>
     </StyledHeader>
   )
 }
