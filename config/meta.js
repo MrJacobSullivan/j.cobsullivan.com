@@ -1,9 +1,3 @@
-export const routes = {
-  home: '/',
-  blog: '/blog',
-  work: '/work',
-}
-
 export const meta = {
   name: 'Jacob Sullivan',
   url: 'https://j.cobsullivan.com',

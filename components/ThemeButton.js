@@ -3,24 +3,12 @@ import { useTheme } from 'next-themes'
 import { SunIcon } from '@heroicons/react/outline'
 import { MoonIcon } from '@heroicons/react/solid'
 
-import tw, { css, styled } from 'twin.macro'
+import tw from 'twin.macro'
 
-const iconStyles = css`
-  ${tw`w-10 h-10 p-2 text-gray-0`};
-  ${tw`dark:(text-gray-9)`};
-`
-
-const buttonStyles = css`
-  ${tw`transition duration-150 rounded bg-blue-4 dark:bg-yellow-4`};
-
-  &:hover {
-    ${tw`bg-blue-5 dark:bg-yellow-5`};
-  }
-
-  &:active {
-    outline: none;
-  }
-`
+const styles = {
+  button: tw`transition duration-150 rounded bg-blue-4 dark:(bg-yellow-4) hover:(bg-blue-5) dark:hover:(bg-yellow-5) active:(outline-none)`,
+  icon: tw`w-10 h-10 p-2 text-gray-0 dark:(text-gray-9)`,
+}
 
 export default function ThemeButton() {
   const [mounted, setMounted] = useState(false)
@@ -35,8 +23,8 @@ export default function ThemeButton() {
   if (!mounted) return null
 
   return (
-    <button css={[buttonStyles]} onClick={toggleTheme}>
-      {theme === 'dark' ? <SunIcon css={[iconStyles]} /> : <MoonIcon css={[iconStyles]} />}
+    <button css={styles.button} onClick={toggleTheme}>
+      {theme === 'dark' ? <SunIcon css={styles.icon} /> : <MoonIcon css={styles.icon} />}
     </button>
   )
 }

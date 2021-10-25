@@ -1,41 +1,46 @@
 import Link from 'next/link'
-import Navigation from './Navigation'
-
+import { useRouter } from 'next/router'
 import ThemeButton from './ThemeButton'
+import { routes } from '@/config/routes'
 
-import tw, { styled } from 'twin.macro'
-import { LinkText } from './StyledLink'
+import tw from 'twin.macro'
 
-const StyledHeader = styled.header`
-  ${tw`sticky top-0 flex w-full bg-gray-0 dark:(bg-gray-9)`};
-
-  div.title {
-    ${tw`flex flex-col items-start justify-start h-auto py-8`};
-  }
-
-  div.nav {
-    ${tw`flex flex-col items-end`}
-  }
-`
+const styles = {
+  header: tw``,
+  structure: tw``,
+  title: tw``,
+  subtitle: tw``,
+  nav: tw``,
+  navLink: ({ current }) => [tw``, current && tw``],
+}
 
 export default function Header() {
+  const { asPath } = useRouter()
+
+  const isCurrent = (route) => asPath.includes(route)
+
   return (
-    <StyledHeader>
-      <div className='title'>
+    <header css={styles.header}>
+      <div css={styles.structure}>
         <Link href='/'>
-          <a>
-            <LinkText tw='text-2xl'>Jacob Sullivan</LinkText>
-          </a>
+          <a css={styles.title}>Jacob Sullivan</a>
         </Link>
+
+        <h2 css={styles.subtitle}>Software Engineer</h2>
       </div>
 
-      <div className='nav'>
-        <Navigation />
-      </div>
+      <div css={styles.structure}>
+        <nav css={styles.nav}>
+          <Link href='/blog'>
+            <a css={styles.navLink({ current: isCurrent(routes.blog) })}>Blog</a>
+          </Link>
+          <Link href='/work'>
+            <a css={styles.navLink({ current: isCurrent(routes.work) })}>Work</a>
+          </Link>
+        </nav>
 
-      <div className='buttons'>
         <ThemeButton />
       </div>
-    </StyledHeader>
+    </header>
   )
 }

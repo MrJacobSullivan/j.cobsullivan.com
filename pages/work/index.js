@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import Layout from '../../components/BaseLayout'
-import { getAllFiles } from '../../utils/mdx'
+import Layout from '@/components/BaseLayout'
+import { getAllFiles } from '@/utils/mdx'
 
 export default function Work({ projects }) {
   return (

@@ -1,5 +1,5 @@
 import { ThemeProvider } from 'next-themes'
-import GlobalStyles from '../components/GlobalStyles'
+import GlobalStyles from '@/components/GlobalStyles'
 
 export default function App({ Component, pageProps }) {
   const getLayout = Component.getLayout || ((page) => page)
@@ -14,13 +14,4 @@ export default function App({ Component, pageProps }) {
       )}
     </ThemeProvider>
   )
-
-  // return getLayout(
-  //   <>
-  //     <GlobalStyles />
-  //     <ThemeProvider attribute='class'>
-  //       <Component {...pageProps} />
-  //     </ThemeProvider>
-  //   </>
-  // )
 }
