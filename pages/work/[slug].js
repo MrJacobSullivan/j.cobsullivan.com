@@ -1,7 +1,7 @@
 import { MDXRemote } from 'next-mdx-remote'
-import Layout from '@/components/ArticleLayout'
-import { components } from '@/components/MDX'
-import { getPaths, getFileSource } from '@/utils/mdx'
+import Layout from '../../components/ArticleLayout'
+import { components } from '../../components/MDX'
+import { getPaths, getFileSource } from '../../utils/mdx'
 
 export default function Project({ source, frontmatter }) {
   return (

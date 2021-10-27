@@ -1,7 +1,6 @@
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
-
 import tw from 'twin.macro'
+import Header from './Header'
+import Footer from './Footer'
 
 const styles = {
   container: tw`flex flex-col items-center justify-center w-screen`,

@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import { useTheme } from 'next-themes'
 import { SunIcon } from '@heroicons/react/outline'
 import { MoonIcon } from '@heroicons/react/solid'
-
 import tw from 'twin.macro'
 
 const styles = {
