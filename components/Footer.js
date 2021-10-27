@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import tw, { styled } from 'twin.macro'
 import Section from './Section'
 import Container from './Container'
@@ -28,7 +29,16 @@ const StyledFooter = styled.footer`
 `
 
 export default function Footer() {
+  const [values, setValues] = useState({ name: '', email: '', message: '' })
+  const [errors, setErrors] = useState({ name: '', email: '', message: '' })
+  const [disabled, setDisabled] = useState(true)
+
   const year = new Date().getFullYear()
+
+  const handleChange = (e) => {
+    const { name, value } = e.target
+    console.log(name, value)
+  }
 
   return (
     <StyledFooter>
@@ -39,6 +49,50 @@ export default function Footer() {
 
         <div className='contact'>
           <h3>Get In Contact</h3>
+          <form>
+            <div>
+              <label>
+                Name
+                <input
+                  type='text'
+                  name='name'
+                  placeholder='required'
+                  value={values.name}
+                  onChange={handleChange}
+                />
+              </label>
+              <span className='error'>{errors.name}</span>
+            </div>
+
+            <div>
+              <label>
+                Email
+                <input
+                  type='email'
+                  name='email'
+                  placeholder='required'
+                  value={values.email}
+                  onChange={handleChange}
+                />
+              </label>
+              <span className='error'>{errors.email}</span>
+            </div>
+
+            <div>
+              <label>
+                Message
+                <textarea
+                  name='message'
+                  placeholder='required'
+                  value={values.message}
+                  onChange={handleChange}
+                />
+              </label>
+              <span className='error'>{errors.message}</span>
+            </div>
+
+            <button>Submit</button>
+          </form>
         </div>
       </div>
 

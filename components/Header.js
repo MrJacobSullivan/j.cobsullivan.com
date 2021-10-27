@@ -40,7 +40,7 @@ const StyledHeader = styled.header`
 export default function Header() {
   const { asPath } = useRouter()
 
-  const isCurrent = (route) => asPath.includes(route)
+  const isCurrent = (route) => asPath.includes(route).toString()
 
   return (
     <StyledHeader>
@@ -56,7 +56,7 @@ export default function Header() {
             <a current={isCurrent(routes.blog)}>Blog</a>
           </Link>
           <Link href='/work'>
-            <a>Work</a>
+            <a current={isCurrent(routes.blog)}>Work</a>
           </Link>
         </nav>
 
