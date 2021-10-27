@@ -4,17 +4,48 @@ import * as yup from 'yup'
 import schema from '../validation/contactFormSchema'
 import { validate } from '../utils/formValidation'
 
-const StyledForm = styled.form``
+const StyledForm = styled.form`
+  ${tw``};
+
+  div.form-group {
+    ${tw``};
+
+    label {
+      ${tw``};
+
+      input {
+        ${tw``};
+      }
+    }
+
+    div.errors {
+      span {
+        ${tw``};
+      }
+    }
+
+    div.characters {
+      span {
+        ${tw``};
+      }
+    }
+
+    button {
+      ${tw``};
+    }
+  }
+`
 
 const initialValues = { name: '', email: '', message: '' }
 
 export default function ContactForm({ submit }) {
   const [values, setValues] = useState(initialValues)
   const [errors, setErrors] = useState(initialValues)
-  const [disabled, setDisabled] = useState(true)
+  const [disabled, setDisabled] = useState(false)
 
-  const [submitted, setSubmitted] = useState(false)
-  const [submissionSuccess, setSubmissionSuccess] = useState(null)
+  useEffect(() => {
+    schema.isValid(values).then((valid) => setDisabled(() => !valid))
+  }, [values])
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -29,17 +60,15 @@ export default function ContactForm({ submit }) {
       // pack data
 
       const result = await submit(/* data */)
-
-      if (result) return setSubmissionSuccess(true)
-      throw new Error(/* error text */)
+      if (!result) throw new Error(/* error text */)
     } catch (err) {
-      setSubmissionSuccess(false)
+      // handle failure
     }
   }
 
   return (
     <StyledForm onSubmit={handleSubmit}>
-      <div>
+      <div className='form-group'>
         <label>
           Name
           <input
@@ -50,10 +79,12 @@ export default function ContactForm({ submit }) {
             onChange={handleChange}
           />
         </label>
-        <span className='error'>{errors.name}</span>
+        <div className='error'>
+          <span>{errors.name}</span>
+        </div>
       </div>
 
-      <div>
+      <div className='form-group'>
         <label>
           Email
           <input
@@ -64,10 +95,12 @@ export default function ContactForm({ submit }) {
             onChange={handleChange}
           />
         </label>
-        <span className='error'>{errors.email}</span>
+        <div className='error'>
+          <span>{errors.email}</span>
+        </div>
       </div>
 
-      <div>
+      <div className='form-group'>
         <label>
           Message
           <textarea
@@ -77,11 +110,15 @@ export default function ContactForm({ submit }) {
             onChange={handleChange}
           />
         </label>
-        <span className='characters'>{values.message.length}/500 characters</span>
-        <span className='error'>{errors.message}</span>
+        <div className='characters'>
+          <span>{values.message.length}/500 characters</span>
+        </div>
+        <div className='error'>
+          <span>{errors.message}</span>
+        </div>
       </div>
 
-      <button>Submit</button>
+      <button disabled={disabled}>Submit</button>
     </StyledForm>
   )
 }

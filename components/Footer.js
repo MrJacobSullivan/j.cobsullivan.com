@@ -5,22 +5,22 @@ import ContactForm from './ContactForm'
 import { meta } from '../config'
 
 const StyledFooter = styled.footer`
-  ${tw`flex flex-col justify-between w-full p-5 bg-red-5`};
+  ${tw`flex flex-col justify-between w-full p-5`};
 
   div.information {
-    ${tw`flex mb-8 bg-blue-5`};
+    ${tw`flex mb-8`};
 
     div.links {
-      ${tw`w-1/2 bg-orange-5`};
+      ${tw`w-1/2`};
     }
 
     div.contact {
-      ${tw`w-1/2 bg-violet-5`};
+      ${tw`w-1/2`};
     }
   }
 
   div.copyright {
-    ${tw`flex flex-col items-center content-center w-full bg-green-5`};
+    ${tw`flex flex-col items-center content-center w-full`};
 
     p {
       ${tw`text-sm font-light text-center text-gray-5 dark:text-gray-6`};

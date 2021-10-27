@@ -4,7 +4,7 @@ import Footer from './Footer'
 
 const styles = {
   screen: tw`flex flex-col items-center justify-center w-screen`,
-  column: tw`flex flex-col items-center w-1/2 min-h-screen my-2`,
+  column: tw`flex flex-col items-center w-1/2 min-h-screen`,
 }
 
 export default function Layout({ children }) {
