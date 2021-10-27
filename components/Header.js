@@ -5,7 +5,7 @@ import ThemeButton from './ThemeButton'
 import { routes } from '../config'
 
 const StyledHeader = styled.header`
-  ${tw`sticky top-0 z-50 flex w-full h-10 px-5 py-10 mt-2 rounded dark:bg-gray-8 bg-gray-2`};
+  ${tw`sticky top-0 z-50 flex w-full h-10 px-5 py-10 rounded dark:bg-gray-8 bg-gray-2`};
 
   div.title {
     ${tw`flex items-center w-1/2`};
