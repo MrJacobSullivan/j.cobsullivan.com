@@ -8,7 +8,7 @@ const StyledFooter = styled.footer`
   ${tw`flex flex-col justify-between w-full p-5 bg-red-5`};
 
   div.information {
-    ${tw`flex mb-2 bg-blue-5`};
+    ${tw`flex mb-8 bg-blue-5`};
 
     div.links {
       ${tw`w-1/2 bg-orange-5`};
@@ -33,11 +33,27 @@ export default function Footer() {
   const [errors, setErrors] = useState({ name: '', email: '', message: '' })
   const [disabled, setDisabled] = useState(true)
 
+  const [submitted, setSubmitted] = useState(false)
+  const [submissionSuccess, setSubmissionSuccess] = useState(null)
+
   const year = new Date().getFullYear()
+
+  const validate = () => null
 
   const handleChange = (e) => {
     const { name, value } = e.target
-    console.log(name, value)
+    setValues((prev) => ({ ...prev, [name]: value }))
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    try {
+      // api call goes here
+      setSubmissionSuccess(true)
+    } catch (err) {
+      setSubmissionSuccess(false)
+    }
   }
 
   return (
@@ -88,6 +104,7 @@ export default function Footer() {
                   onChange={handleChange}
                 />
               </label>
+              <span className='characters'>{values.message.length}/120 characters</span>
               <span className='error'>{errors.message}</span>
             </div>
 
