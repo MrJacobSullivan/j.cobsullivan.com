@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react'
 import tw, { styled } from 'twin.macro'
 import Section from './Section'
 import Container from './Container'
+import ContactForm from './ContactForm'
 import { meta } from '../config'
 
 const StyledFooter = styled.footer`
@@ -29,30 +29,15 @@ const StyledFooter = styled.footer`
 `
 
 export default function Footer() {
-  const [values, setValues] = useState({ name: '', email: '', message: '' })
-  const [errors, setErrors] = useState({ name: '', email: '', message: '' })
-  const [disabled, setDisabled] = useState(true)
-
-  const [submitted, setSubmitted] = useState(false)
-  const [submissionSuccess, setSubmissionSuccess] = useState(null)
-
   const year = new Date().getFullYear()
 
-  const validate = () => null
-
-  const handleChange = (e) => {
-    const { name, value } = e.target
-    setValues((prev) => ({ ...prev, [name]: value }))
-  }
-
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-
+  const handleSubmit = async (data) => {
     try {
       // api call goes here
-      setSubmissionSuccess(true)
+
+      return true
     } catch (err) {
-      setSubmissionSuccess(false)
+      return false
     }
   }
 
@@ -65,51 +50,8 @@ export default function Footer() {
 
         <div className='contact'>
           <h3>Get In Contact</h3>
-          <form>
-            <div>
-              <label>
-                Name
-                <input
-                  type='text'
-                  name='name'
-                  placeholder='required'
-                  value={values.name}
-                  onChange={handleChange}
-                />
-              </label>
-              <span className='error'>{errors.name}</span>
-            </div>
 
-            <div>
-              <label>
-                Email
-                <input
-                  type='email'
-                  name='email'
-                  placeholder='required'
-                  value={values.email}
-                  onChange={handleChange}
-                />
-              </label>
-              <span className='error'>{errors.email}</span>
-            </div>
-
-            <div>
-              <label>
-                Message
-                <textarea
-                  name='message'
-                  placeholder='required'
-                  value={values.message}
-                  onChange={handleChange}
-                />
-              </label>
-              <span className='characters'>{values.message.length}/120 characters</span>
-              <span className='error'>{errors.message}</span>
-            </div>
-
-            <button>Submit</button>
-          </form>
+          <ContactForm submit={handleSubmit} />
         </div>
       </div>
 
