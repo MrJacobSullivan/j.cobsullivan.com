@@ -1,21 +1,24 @@
 import { useState, useEffect } from 'react'
 import tw, { styled } from 'twin.macro'
+import * as yup from 'yup'
+import schema from '../validation/contactFormSchema'
+import { validate } from '../utils/formValidation'
 
 const StyledForm = styled.form``
 
+const initialValues = { name: '', email: '', message: '' }
+
 export default function ContactForm({ submit }) {
-  const [values, setValues] = useState({ name: '', email: '', message: '' })
-  const [errors, setErrors] = useState({ name: '', email: '', message: '' })
+  const [values, setValues] = useState(initialValues)
+  const [errors, setErrors] = useState(initialValues)
   const [disabled, setDisabled] = useState(true)
 
   const [submitted, setSubmitted] = useState(false)
   const [submissionSuccess, setSubmissionSuccess] = useState(null)
 
-  const validate = (name, value) => null
-
   const handleChange = (e) => {
     const { name, value } = e.target
-    validate(name, value)
+    validate(name, value, schema, setErrors)
     setValues((prev) => ({ ...prev, [name]: value }))
   }
 
@@ -74,7 +77,7 @@ export default function ContactForm({ submit }) {
             onChange={handleChange}
           />
         </label>
-        <span className='characters'>{values.message.length}/120 characters</span>
+        <span className='characters'>{values.message.length}/500 characters</span>
         <span className='error'>{errors.message}</span>
       </div>
 
