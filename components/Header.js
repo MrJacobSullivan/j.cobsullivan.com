@@ -23,7 +23,7 @@ const StyledHeader = styled.header`
     ${tw`flex items-center justify-end w-1/2`};
 
     a {
-      ${tw`font-light transition duration-150`};
+      ${tw`font-light transition duration-150 cursor-pointer`};
 
       &:hover {
         ${tw`dark:text-violet-3 text-green-5`};
@@ -37,10 +37,12 @@ const StyledHeader = styled.header`
   }
 `
 
-export default function Header() {
-  const { asPath } = useRouter()
+const current = ({ active }) => active && tw`!cursor-default text-red-5 hover:(text-red-5!)`
 
-  const isCurrent = (route) => asPath.includes(route).toString()
+export default function Header() {
+  const { pathname } = useRouter()
+
+  const isCurrent = (route) => (pathname.includes(route) ? 'true' : '')
 
   return (
     <StyledHeader>
@@ -53,10 +55,14 @@ export default function Header() {
       <div className='nav'>
         <nav>
           <Link href='/blog'>
-            <a current={isCurrent(routes.blog)}>Blog</a>
+            <a active={isCurrent(routes.blog)} css={current}>
+              Blog
+            </a>
           </Link>
           <Link href='/work'>
-            <a current={isCurrent(routes.blog)}>Work</a>
+            <a active={isCurrent(routes.work)} css={current}>
+              Work
+            </a>
           </Link>
         </nav>
 
