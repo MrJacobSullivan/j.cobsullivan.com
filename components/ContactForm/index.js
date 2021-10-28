@@ -1,6 +1,6 @@
 import { StyledForm } from './styles'
 import { useForm } from '../../hooks/useForm'
-import schema from '../validation/contactFormSchema'
+import schema from '../../validation/contactFormSchema'
 
 const initialValues = { name: '', email: '', message: '' }
 
@@ -9,6 +9,7 @@ export default function ContactForm({ submit }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    console.log('submitted')
 
     try {
       // pack data
