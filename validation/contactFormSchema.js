@@ -5,6 +5,6 @@ export default yup.object().shape({
   email: yup.string().email('Enter a valid email address.').required('Email is required.'),
   message: yup
     .string()
-    .required('Message is required')
-    .max(500, 'Message cannot be longer than 500 characters'),
+    .max(500, '' /* error message handled in UI */)
+    .required('Message is required'),
 })

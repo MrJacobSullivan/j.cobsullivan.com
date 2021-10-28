@@ -1,4 +1,4 @@
-import { StyledForm } from './styles'
+import { Styled } from './styles'
 import { useForm } from '../../hooks/useForm'
 import schema from '../../validation/contactFormSchema'
 
@@ -27,41 +27,63 @@ export default function ContactForm({ submit }) {
   }
 
   return (
-    <StyledForm onSubmit={handleSubmit}>
-      <div className='form-group'>
-        <label>
-          Name<span className='required'>*</span>
-          <input type='text' name='name' value={values.name} onChange={handleChange} />
-        </label>
-        <div className='error'>
+    <Styled.Form onSubmit={handleSubmit}>
+      <h3>Contact</h3>
+
+      <Styled.FormGroup>
+        <Styled.InputGroup>
+          <Styled.Label htmlFor='name'>Name</Styled.Label>
+          <Styled.Input
+            type='text'
+            name='name'
+            id='name'
+            value={values.name}
+            onChange={handleChange}
+          />
+        </Styled.InputGroup>
+        <Styled.Errors>
           <span>{errors.name}</span>
-        </div>
-      </div>
+        </Styled.Errors>
+      </Styled.FormGroup>
 
-      <div className='form-group'>
-        <label>
-          Email<span className='required'>*</span>
-          <input type='email' name='email' value={values.email} onChange={handleChange} />
-        </label>
-        <div className='error'>
+      <Styled.FormGroup>
+        <Styled.InputGroup>
+          <Styled.Label htmlFor='email'>Email</Styled.Label>
+          <Styled.Input
+            type='email'
+            name='email'
+            id='email'
+            value={values.email}
+            onChange={handleChange}
+          />
+        </Styled.InputGroup>
+        <Styled.Errors>
           <span>{errors.email}</span>
-        </div>
-      </div>
+        </Styled.Errors>
+      </Styled.FormGroup>
 
-      <div className='form-group'>
-        <label>
-          Message<span className='required'>*</span>
-          <textarea name='message' value={values.message} onChange={handleChange} />
-        </label>
-        <div className='characters'>
-          <span>{values.message.length}/500 characters</span>
-        </div>
-        <div className='error'>
-          <span>{errors.message}</span>
-        </div>
-      </div>
+      <Styled.FormGroup>
+        <Styled.InputGroup>
+          <Styled.Label htmlFor='message'>Message</Styled.Label>
+          <Styled.Textarea
+            name='message'
+            id='message'
+            rows={8}
+            value={values.message}
+            onChange={handleChange}
+          />
+        </Styled.InputGroup>
+        <Styled.SpanGroup>
+          <Styled.Errors>
+            <span>{errors.message}</span>
+          </Styled.Errors>
+          <Styled.Characters error={values.message.length > 500}>
+            <span>{values.message.length}/500 characters</span>
+          </Styled.Characters>
+        </Styled.SpanGroup>
+      </Styled.FormGroup>
 
-      <button disabled={disabled}>Submit</button>
-    </StyledForm>
+      <Styled.SubmitButton disabled={disabled}>Submit</Styled.SubmitButton>
+    </Styled.Form>
   )
 }
