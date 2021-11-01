@@ -1,24 +1,38 @@
-import Link from 'next/link'
-import Layout from '../components/Layout'
-
-import tw, { styled } from 'twin.macro'
-
-const Main = tw.div`text-green-5`
-
-const BlueMain = styled(Main)(() => ({
-  '> p': tw`text-xl`,
-}))
-
-const RedMain = styled(Main)(({ open }) => [
-  tw`bg-red-2 text-red-8`,
-  open && tw`border border-red-9`,
-])
+import Layout from '../components/BaseLayout'
+import Section from '../components/Section'
 
 export default function Home() {
   return (
-    <Main>
-      <p>Home</p>
-    </Main>
+    <section>
+      <Section>
+        <h1>Jacob Sullivan</h1>
+
+        <p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laborum beatae
+          pariatur laboriosam obcaecati perspiciatis saepe ut. In ad explicabo ratione
+          corporis optio, iure iusto! Mollitia natus deserunt cum aperiam dolorem.
+        </p>
+      </Section>
+
+      <Section>
+        <h2>About Me</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, impedit vel.
+          Voluptatibus voluptas quisquam alias deleniti, laborum dolores pariatur nobis
+          temporibus eveniet in cupiditate beatae vero nostrum architecto. Aliquam,
+          recusandae?
+        </p>
+      </Section>
+
+      <Section>
+        <h2>Skills</h2>
+        <ul>
+          <li>JavaScript</li>
+          <li>React</li>
+          <li>Python</li>
+        </ul>
+      </Section>
+    </section>
   )
 }
 
