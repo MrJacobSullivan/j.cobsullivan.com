@@ -1,15 +1,16 @@
 import Header from '../Header'
+import Page from '../Page'
 import Footer from '../Footer'
-import { Styled } from './styles'
+import { Screen, Margin } from './styles'
 
 export default function Layout({ children }) {
   return (
-    <Styled.Screen>
-      <Styled.Column>
+    <Screen>
+      <Margin>
         <Header />
-        {children}
+        <Page>{children}</Page>
         <Footer />
-      </Styled.Column>
-    </Styled.Screen>
+      </Margin>
+    </Screen>
   )
 }

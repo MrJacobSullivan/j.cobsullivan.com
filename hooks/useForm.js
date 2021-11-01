@@ -5,6 +5,9 @@ export const useForm = (initialValues, schema) => {
   const [values, setValues] = useState(initialValues)
 
   const [errors, setErrors] = useState(() => {
+    // creates a new object from keys of initialValues
+    // with value of an empty string
+    // i.e. { key1: '', key2: '' }
     const keys = Object.keys(initialValues)
     return Object.fromEntries(keys.map((key) => [key, '']))
   })

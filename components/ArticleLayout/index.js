@@ -1,15 +1,15 @@
 import Header from '../Header'
 import Footer from '../Footer'
-import { Styled } from './styles'
+import { Screen, Margin } from './styles'
 
 export default function Layout({ children }) {
   return (
-    <Styled.Screen>
-      <Styled.Column>
+    <Screen>
+      <Margin>
         <Header />
         {children}
         <Footer />
-      </Styled.Column>
-    </Styled.Screen>
+      </Margin>
+    </Screen>
   )
 }

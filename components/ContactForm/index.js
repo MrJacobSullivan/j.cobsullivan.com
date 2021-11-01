@@ -1,10 +1,20 @@
 import TextInput from './TextInput'
 import TextAreaInput from './TextAreaInput'
-import { Styled } from './styles'
+import { FormTitle, SubmitButton, styles } from './styles'
 import { useForm } from '../../hooks/useForm'
 import schema from '../../validation/contactFormSchema'
 
 const initialValues = { name: '', email: '', message: '' }
+
+// const handleSubmit = async (data) => {
+//   try {
+//     // api call goes here
+
+//     return true
+//   } catch (err) {
+//     return false
+//   }
+// }
 
 export default function ContactForm({ submit }) {
   const { values, errors, disabled, handleChange } = useForm(initialValues, schema)
@@ -29,8 +39,8 @@ export default function ContactForm({ submit }) {
   }
 
   return (
-    <Styled.Form onSubmit={handleSubmit}>
-      <h3>Contact</h3>
+    <form css={styles.form} onSubmit={handleSubmit}>
+      <FormTitle>Contact</FormTitle>
 
       <TextInput
         label='Name'
@@ -54,12 +64,12 @@ export default function ContactForm({ submit }) {
         label='Message'
         name='message'
         id='message'
-        error={errors.message}
         value={values.message}
+        error={errors.message}
         onChange={handleChange}
       />
 
-      <Styled.SubmitButton disabled={disabled}>Submit</Styled.SubmitButton>
-    </Styled.Form>
+      <SubmitButton disabled={disabled}>Submit</SubmitButton>
+    </form>
   )
 }

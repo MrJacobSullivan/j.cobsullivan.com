@@ -1,11 +1,7 @@
 import tw, { styled } from 'twin.macro'
 
-const Form = styled.form`
-  ${tw`px-4 py-2 text-lg transition duration-200 border-l border-r border-gray-8`};
-
-  h3 {
-    ${tw`mb-8 text-2xl text-center`};
-  }
+const FormTitle = styled.h3`
+  ${tw`mb-8 text-2xl text-center`};
 `
 
 const FormGroup = styled.div`
@@ -71,8 +67,12 @@ const SubmitButton = styled.button`
   }
 `
 
-export const Styled = {
-  Form,
+const styles = {
+  form: tw`px-4 py-2 text-lg transition duration-200 border-l border-r border-gray-8`,
+}
+
+export {
+  FormTitle,
   FormGroup,
   InputGroup,
   Label,
@@ -82,4 +82,5 @@ export const Styled = {
   Errors,
   Characters,
   SubmitButton,
+  styles,
 }
