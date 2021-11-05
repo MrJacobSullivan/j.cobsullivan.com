@@ -1,15 +1,21 @@
-import { MDXRemote } from 'next-mdx-remote'
+import { useMemo } from 'react'
+import { getMDXComponent } from 'mdx-bundler/client'
 import Layout from '../../components/ArticleLayout'
 import { components } from '../../components/MDX'
 import { getPaths, getFileSource } from '../../utils/mdx'
 
-export default function Post({ source, frontmatter }) {
+export default function Post({ code, frontmatter }) {
+  const MDX = useMemo(() => getMDXComponent(code), [code])
+
   return (
     <section>
       <div>
         <h1>{frontmatter.title}</h1>
       </div>
-      <MDXRemote {...source} components={components} />
+
+      <article tw='markdown'>
+        <MDX components={components} />
+      </article>
     </section>
   )
 }
