@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
-import { serialize } from 'next-mdx-remote/serialize'
+import { bundleMDX } from 'mdx-bundler'
 
 // point to ~/content/[folder] <- either blog/ or work/
 const deriveContentPath = (folder) => {
@@ -40,18 +40,20 @@ export const getPaths = (folder) => {
 
 // [slug] getStaticProps
 export const getFileSource = async (folder, slug) => {
+  const componentPath = path.join(process.cwd(), `components/MDX`)
   const filePath = path.join(deriveContentPath(folder), `${slug}.mdx`)
   const source = fs.readFileSync(filePath)
 
-  const { content, data } = matter(source)
-
-  const mdxSource = await serialize(content, {
-    mdxOptions: {
-      remarkPlugins: [],
-      rehypePlugins: [],
+  const { code, frontmatter } = await bundleMDX(source, {
+    cwd: componentPath,
+    esbuildOptions: (options) => {
+      options.loader = {
+        ...options.loader,
+        '.js': 'jsx',
+      }
+      return options
     },
-    scope: data,
   })
 
-  return { source: mdxSource, frontmatter: data }
+  return { code, frontmatter }
 }
