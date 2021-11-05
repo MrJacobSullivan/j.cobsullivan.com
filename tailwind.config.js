@@ -2,7 +2,13 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
   mode: 'jit',
-  purge: ['./pages/**/*.{js}', './components/**/*.{js}', './theme/**/*.{js}'],
+  purge: [
+    './pages/**/*.{js,mdx}',
+    './components/**/*.{js,mdx}',
+    './theme/**/*.{js,mdx}',
+    './content/**/*.{js,mdx}',
+    './**/*.{mdx}',
+  ],
   darkMode: 'class',
   theme: {
     colors: require('tailwindcss-open-color'),
@@ -12,4 +18,9 @@ module.exports = {
       },
     },
   },
+  plugins: [
+    require('@tailwindcss/typography')({
+      className: 'markdown',
+    }),
+  ],
 }
